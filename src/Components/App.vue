@@ -3,6 +3,16 @@ q-layout#layout(view="hHh LpR fFf")
   q-header#header(bordered)
     q-toolbar
       q-toolbar-title Quimarche Quasar Layout
+      q-btn-dropdown(:label="activity.label")
+        q-list(separator)
+          q-item(@click="clickActivity(index)" clickable v-close-popup v-for="(activity, index) in activities" v-ripple)
+            q-item-section
+              q-item-label {{ activity.label }}
+      q-btn-dropdown(:label="count.label")
+        q-list(separator)
+          q-item(@click="clickCount(index)" clickable v-close-popup v-for="(count, index) in counts" v-ripple)
+            q-item-section
+              q-item-label {{ count.label }}
   q-page-container
     q-page
       q-toolbar#breadcrumbs.bordered
@@ -20,6 +30,10 @@ q-layout#layout(view="hHh LpR fFf")
 export default {
   data() {
     return {
+      activities: [{ label: 'Intro' }, { label: 'Pre-Interaction' }, { label: 'Interaction' }, { label: 'Evaluation' }, { label: 'Feedback' }, { label: 'Outro' }],
+      activity: null,
+      counts: [{ label: '1' }, { label: '2' }, { label: '3' }, { label: '4' }, { label: '5' }, { label: '6' }],
+      count: null,
       observersLayoutObserver: null,
       observersLayoutObserverElementBreadcrumbs: null,
       observersLayoutObserverElementFooter: null,
@@ -28,6 +42,10 @@ export default {
       observersLayoutPageScrollAreaStyle: null
     }
   },
+  created() {
+    this.clickActivity(0)
+    this.clickCount(0)
+  },
   mounted() {
     this.observersLayoutObserverInitialise()
   },
@@ -35,6 +53,12 @@ export default {
     this.observersLayoutObserverFinalise()
   },
   methods: {
+    clickActivity(index) {
+      this.activity = this.activities[index]
+    },
+    clickCount(index) {
+      this.count = this.counts[index]
+    },
     observersLayoutObserverCallback() {
       const clientHeightBreadcrumbs = this.observersLayoutObserverElementBreadcrumbs.clientHeight + 1
       const clientHeightFooter = this.observersLayoutObserverElementFooter.clientHeight + 1
