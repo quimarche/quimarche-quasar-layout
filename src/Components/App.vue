@@ -4,8 +4,8 @@ q-layout#layout(view="hHh LpR fFf")
     q-toolbar
       q-toolbar-title Quimarche Quasar Layout
   q-page-container
-    q-page.bg-warning
-      q-toolbar#breadcrumbs.bg-secondary
+    q-page
+      q-toolbar#breadcrumbs.bordered
         q-toolbar-title Breadcrumbs
       q-scroll-area(:style="observersLayoutPageScrollAreaStyle")
         div.q-layout-padding
@@ -36,15 +36,11 @@ export default {
   },
   methods: {
     observersLayoutObserverCallback() {
-      const clientHeightBreadcrumbs = this.observersLayoutObserverElementBreadcrumbs.clientHeight
+      const clientHeightBreadcrumbs = this.observersLayoutObserverElementBreadcrumbs.clientHeight + 1
       const clientHeightFooter = this.observersLayoutObserverElementFooter.clientHeight + 1
       const clientHeightHeader = this.observersLayoutObserverElementHeader.clientHeight + 1
-      console.log('clientHeightBreadcrumbs', clientHeightBreadcrumbs)
-      console.log('clientHeightFooter', clientHeightFooter)
-      console.log('clientHeightHeader', clientHeightHeader)
 
       this.observersLayoutPageScrollAreaStyle = `height: calc(100vh - ${clientHeightHeader}px - ${clientHeightBreadcrumbs}px - ${clientHeightFooter}px)`
-      console.log('observersLayoutPageScrollAreaStyle', this.observersLayoutPageScrollAreaStyle)
     },
     observersLayoutObserverFinalise() {
       this.observersLayoutObserver?.disconnect()
@@ -70,6 +66,6 @@ export default {
 </script>
 
 <style lang="sass">
-body
-  background: WhiteSmoke
+.bordered
+  border-bottom: $layout-border
 </style>
