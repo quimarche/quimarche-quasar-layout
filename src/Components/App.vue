@@ -119,4 +119,6 @@ export default {
   border-bottom: $layout-border
 .q-pa-12
   padding: 12px
+.row video
+  flex-shrink: 1
 </style>

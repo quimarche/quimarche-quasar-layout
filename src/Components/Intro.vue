@@ -1,5 +1,7 @@
 <template lang="pug">
-video.fit(loop :src="video.src" v-for="video in videos")
+div.fit.row.bg-info
+  video(loop :src="video.src" v-for="video in videos")
+  //- div.fit videos: {{ videos }}
 </template>
 
 <script>
