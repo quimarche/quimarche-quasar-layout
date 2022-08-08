@@ -18,7 +18,7 @@ q-layout#layout(view="hHh LpR fFf")
       q-toolbar#breadcrumbs.bordered
         q-toolbar-title Breadcrumbs
       //- this could be a q-scroll-area rather than a div
-      div(:style="observersLayoutPageScrollAreaStyle") 
+      div(:style="observersLayoutStyle") 
         div.fit.q-pa-12
           component(:videos="videos" :is="activity.label")
   q-footer#footer(bordered)
@@ -35,6 +35,8 @@ import Intro from '@/Components/Intro.vue'
 import Outro from '@/Components/Outro.vue'
 import PreInteraction from '@/Components/PreInteraction.vue'
 
+import UseObservers from '@/Uses/UseObservers'
+
 export default {
   components: {
     Evaluation,
@@ -43,6 +45,14 @@ export default {
     Intro,
     Outro,
     PreInteraction
+  },
+  setup() {
+    const { observersLayoutFinalise, observersLayoutInitialise, observersLayoutStyle } = UseObservers()
+    return {
+      observersLayoutFinalise,
+      observersLayoutInitialise,
+      observersLayoutStyle
+    }
   },
   data() {
     return {
@@ -57,12 +67,6 @@ export default {
         { label: '6 People', length: 6 }
       ],
       count: null,
-      observersLayoutObserver: null,
-      observersLayoutObserverElementBreadcrumbs: null,
-      observersLayoutObserverElementFooter: null,
-      observersLayoutObserverElementHeader: null,
-      observersLayoutObserverElementLayout: null,
-      observersLayoutPageScrollAreaStyle: null,
       videos: []
     }
   },
@@ -71,10 +75,10 @@ export default {
     this.clickCount(1)
   },
   mounted() {
-    this.observersLayoutObserverInitialise()
+    this.observersLayoutInitialise()
   },
   beforeUnmount() {
-    this.observersLayoutObserverFinalise()
+    this.observersLayoutFinalise()
   },
   methods: {
     clickActivity(index) {
@@ -83,32 +87,6 @@ export default {
     clickCount(index) {
       this.count = this.counts[index]
       this.videos = Array.from({ length: this.count.length }, () => ({ src: 'video-1.mp4' }))
-    },
-    observersLayoutObserverCallback() {
-      const clientHeightBreadcrumbs = this.observersLayoutObserverElementBreadcrumbs.clientHeight + 1
-      const clientHeightFooter = this.observersLayoutObserverElementFooter.clientHeight + 1
-      const clientHeightHeader = this.observersLayoutObserverElementHeader.clientHeight + 1
-
-      this.observersLayoutPageScrollAreaStyle = `height: calc(100vh - ${clientHeightHeader}px - ${clientHeightBreadcrumbs}px - ${clientHeightFooter}px)`
-    },
-    observersLayoutObserverFinalise() {
-      this.observersLayoutObserver?.disconnect()
-
-      this.observersLayoutObserver = null
-      this.observersLayoutObserverElementBreadcrumbs = null
-      this.observersLayoutObserverElementFooter = null
-      this.observersLayoutObserverElementHeader = null
-      this.observersLayoutObserverElementLayout = null
-      this.observersLayoutPageScrollAreaStyle = null
-    },
-    observersLayoutObserverInitialise() {
-      this.observersLayoutObserverElementBreadcrumbs = document.getElementById('breadcrumbs')
-      this.observersLayoutObserverElementFooter = document.getElementById('footer')
-      this.observersLayoutObserverElementHeader = document.getElementById('header')
-      this.observersLayoutObserverElementLayout = document.getElementById('layout')
-
-      this.observersLayoutObserver = new ResizeObserver(() => this.observersLayoutObserverCallback())
-      this.observersLayoutObserver.observe(this.observersLayoutObserverElementLayout, this.observersLayoutObserverElementBreadcrumbs)
     }
   }
 }
@@ -119,6 +97,7 @@ export default {
   border-bottom: $layout-border
 .q-pa-12
   padding: 12px
-.row video
-  flex-shrink: 1
+video
+  height: 48px
+  width: 64px
 </style>
