@@ -44,7 +44,7 @@ export default () => {
   }
 
   const observersVideosCallback = () => {
-    initLayoutContainer(state.observersVideosElementVideos, { fixedRatio: true }).layout()
+    initLayoutContainer(state.observersVideosElementVideos, { fixedRatio: true, scaleLastRow: false }).layout()
   }
 
   const observersVideosFinalise = () => {
