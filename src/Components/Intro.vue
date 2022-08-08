@@ -1,7 +1,5 @@
 <template lang="pug">
-div Intro {{ count }}
-q-video(:ratio="4/3" src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0")
-q-video(:ratio="4/3" src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0")
+video.fit(loop :src="video.src" v-for="video in videos")
 </template>
 
 <script>
@@ -10,6 +8,10 @@ export default {
     count: {
       required: true,
       type: Number
+    },
+    videos: {
+      required: true,
+      type: Array
     }
   }
 }

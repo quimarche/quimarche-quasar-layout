@@ -17,9 +17,10 @@ q-layout#layout(view="hHh LpR fFf")
     q-page
       q-toolbar#breadcrumbs.bordered
         q-toolbar-title Breadcrumbs
-      q-scroll-area(:style="observersLayoutPageScrollAreaStyle")
-        div.q-pa-12
-          component(:count="count.label" :is="activity.label")
+      //- this could be a q-scroll-area rather than a div
+      div(:style="observersLayoutPageScrollAreaStyle") 
+        div.fit.q-pa-12
+          component(:videos="videos" :is="activity.label")
   q-footer#footer(bordered)
     q-bar(dense)
       q-space
@@ -47,19 +48,27 @@ export default {
     return {
       activities: [{ label: 'Intro' }, { label: 'PreInteraction' }, { label: 'Interaction' }, { label: 'Evaluation' }, { label: 'Feedback' }, { label: 'Outro' }],
       activity: null,
-      counts: [{ label: '1' }, { label: '2' }, { label: '3' }, { label: '4' }, { label: '5' }, { label: '6' }],
+      counts: [
+        { label: '1 Person', length: 1 },
+        { label: '2 People', length: 2 },
+        { label: '3 People', length: 3 },
+        { label: '4 People', length: 4 },
+        { label: '5 People', length: 5 },
+        { label: '6 People', length: 6 }
+      ],
       count: null,
       observersLayoutObserver: null,
       observersLayoutObserverElementBreadcrumbs: null,
       observersLayoutObserverElementFooter: null,
       observersLayoutObserverElementHeader: null,
       observersLayoutObserverElementLayout: null,
-      observersLayoutPageScrollAreaStyle: null
+      observersLayoutPageScrollAreaStyle: null,
+      videos: []
     }
   },
   created() {
     this.clickActivity(0)
-    this.clickCount(0)
+    this.clickCount(1)
   },
   mounted() {
     this.observersLayoutObserverInitialise()
@@ -73,6 +82,7 @@ export default {
     },
     clickCount(index) {
       this.count = this.counts[index]
+      this.videos = Array.from({ length: this.count.length }, () => ({ src: 'video-1.mp4' }))
     },
     observersLayoutObserverCallback() {
       const clientHeightBreadcrumbs = this.observersLayoutObserverElementBreadcrumbs.clientHeight + 1
