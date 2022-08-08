@@ -18,8 +18,8 @@ q-layout#layout(view="hHh LpR fFf")
       q-toolbar#breadcrumbs.bordered
         q-toolbar-title Breadcrumbs
       q-scroll-area(:style="observersLayoutPageScrollAreaStyle")
-        div.q-layout-padding
-          div(v-for="n in 40") Line {{ n }}
+        div.q-pa-12
+          component(:count="count.label" :is="activity.label")
   q-footer#footer(bordered)
     q-bar(dense)
       q-space
@@ -27,10 +27,25 @@ q-layout#layout(view="hHh LpR fFf")
 </template>
 
 <script>
+import Evaluation from '@/Components/Evaluation.vue'
+import Feedback from '@/Components/Feedback.vue'
+import Interaction from '@/Components/Interaction.vue'
+import Intro from '@/Components/Intro.vue'
+import Outro from '@/Components/Outro.vue'
+import PreInteraction from '@/Components/PreInteraction.vue'
+
 export default {
+  components: {
+    Evaluation,
+    Feedback,
+    Interaction,
+    Intro,
+    Outro,
+    PreInteraction
+  },
   data() {
     return {
-      activities: [{ label: 'Intro' }, { label: 'Pre-Interaction' }, { label: 'Interaction' }, { label: 'Evaluation' }, { label: 'Feedback' }, { label: 'Outro' }],
+      activities: [{ label: 'Intro' }, { label: 'PreInteraction' }, { label: 'Interaction' }, { label: 'Evaluation' }, { label: 'Feedback' }, { label: 'Outro' }],
       activity: null,
       counts: [{ label: '1' }, { label: '2' }, { label: '3' }, { label: '4' }, { label: '5' }, { label: '6' }],
       count: null,
@@ -92,4 +107,6 @@ export default {
 <style lang="sass">
 .bordered
   border-bottom: $layout-border
+.q-pa-12
+  padding: 12px
 </style>
