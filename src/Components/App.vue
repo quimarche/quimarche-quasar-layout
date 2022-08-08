@@ -3,12 +3,12 @@ q-layout#layout(view="hHh LpR fFf")
   q-header#header(bordered)
     q-toolbar
       q-toolbar-title Quimarche Quasar Layout
-      q-btn-dropdown(:label="activity.label")
+      q-btn-dropdown(flat :label="activity.label")
         q-list(separator)
           q-item(@click="clickActivity(index)" clickable v-close-popup v-for="(activity, index) in activities" v-ripple)
             q-item-section
               q-item-label {{ activity.label }}
-      q-btn-dropdown(:label="count.label")
+      q-btn-dropdown(flat :label="count.label")
         q-list(separator)
           q-item(@click="clickCount(index)" clickable v-close-popup v-for="(count, index) in counts" v-ripple)
             q-item-section
@@ -18,7 +18,7 @@ q-layout#layout(view="hHh LpR fFf")
       q-toolbar#breadcrumbs.bordered
         q-toolbar-title Breadcrumbs
       //- this could be a q-scroll-area rather than a div
-      div(:style="observersLayoutStyle") 
+      div(:style="observersLayoutStyle")
         div.fit.q-pa-12
           component(:videos="videos" :is="activity.label")
   q-footer#footer(bordered)
@@ -97,7 +97,6 @@ export default {
   border-bottom: $layout-border
 .q-pa-12
   padding: 12px
-video
-  height: 48px
-  width: 64px
+#videos
+  position: relative
 </style>

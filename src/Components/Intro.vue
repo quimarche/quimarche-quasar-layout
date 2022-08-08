@@ -1,16 +1,15 @@
 <template lang="pug">
-div.fit.bg-info
-  template(v-for="video in videos")
-    video(autoplay controls loop :src="video.src")
+videos(:key="videos.length" :videos="videos")
 </template>
 
 <script>
+import Videos from '@/Components/Videos.vue'
+
 export default {
+  components: {
+    Videos
+  },
   props: {
-    count: {
-      required: true,
-      type: Number
-    },
     videos: {
       required: true,
       type: Array

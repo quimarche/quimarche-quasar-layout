@@ -1,13 +1,18 @@
 <template lang="pug">
-div Outro
+videos(:key="videos.length" :videos="videos")
 </template>
 
 <script>
+import Videos from '@/Components/Videos.vue'
+
 export default {
+  components: {
+    Videos
+  },
   props: {
-    count: {
+    videos: {
       required: true,
-      type: Number
+      type: Array
     }
   }
 }

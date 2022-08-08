@@ -1,12 +1,16 @@
+import initLayoutContainer from 'opentok-layout-js'
 import { computed, reactive } from 'vue'
 
 const state = reactive({
-  observersLayout: null,
   observersLayoutElementBreadcrumbs: null,
   observersLayoutElementFooter: null,
   observersLayoutElementHeader: null,
   observersLayoutElementLayout: null,
-  observersLayoutStyle: null
+  observersLayoutResizeObserver: null,
+  observersLayoutStyle: null,
+  observersVideosElementVideos: null,
+  observersVideosMutationObserver: null,
+  observersVideosResizeObserver: null
 })
 
 export default () => {
@@ -19,13 +23,13 @@ export default () => {
   }
 
   const observersLayoutFinalise = () => {
-    state.observersLayout?.disconnect()
+    state.observersLayoutResizeObserver?.disconnect()
 
-    state.observersLayout = null
     state.observersLayoutElementBreadcrumbs = null
     state.observersLayoutElementFooter = null
     state.observersLayoutElementHeader = null
     state.observersLayoutElementLayout = null
+    state.observersLayoutResizeObserver = null
     state.observersLayoutStyle = null
   }
 
@@ -35,13 +39,38 @@ export default () => {
     state.observersLayoutElementHeader = document.getElementById('header')
     state.observersLayoutElementLayout = document.getElementById('layout')
 
-    state.observersLayout = new ResizeObserver(() => observersLayoutCallback())
-    state.observersLayout.observe(state.observersLayoutElementLayout, state.observersLayoutElementBreadcrumbs)
+    state.observersLayoutResizeObserver = new ResizeObserver(() => observersLayoutCallback())
+    state.observersLayoutResizeObserver.observe(state.observersLayoutElementLayout, state.observersLayoutElementBreadcrumbs)
+  }
+
+  const observersVideosCallback = () => {
+    initLayoutContainer(state.observersVideosElementVideos, { fixedRatio: true }).layout()
+  }
+
+  const observersVideosFinalise = () => {
+    state.observersVideosMutationObserver?.disconnect()
+    state.observersVideosResizeObserver?.disconnect()
+
+    state.observersVideosElementVideos = null
+    state.observersVideosMutationObserver = null
+    state.observersVideosResizeObserver = null
+  }
+
+  const observersVideosInitialise = () => {
+    state.observersVideosElementVideos = document.getElementById('videos')
+
+    state.observersVideosMutationObserver = new MutationObserver(() => observersVideosCallback())
+    state.observersVideosMutationObserver.observe(state.observersVideosElementVideos, { childList: true })
+
+    state.observersVideosResizeObserver = new ResizeObserver(() => observersVideosCallback())
+    state.observersVideosResizeObserver.observe(state.observersVideosElementVideos)
   }
 
   return {
     observersLayoutFinalise: () => observersLayoutFinalise(),
     observersLayoutInitialise: () => observersLayoutInitialise(),
-    observersLayoutStyle: computed(() => state.observersLayoutStyle)
+    observersLayoutStyle: computed(() => state.observersLayoutStyle),
+    observersVideosFinalise: () => observersVideosFinalise(),
+    observersVideosInitialise: () => observersVideosInitialise()
   }
 }
