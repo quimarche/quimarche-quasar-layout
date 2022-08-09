@@ -1,12 +1,17 @@
 <template lang="pug">
 div#videosAllParticipants.fit
-  video(loop :src="video.src" v-for="video in videosAllParticipants")
+  video-participant(loop :video="video" v-for="video in videosAllParticipants")
 </template>
 
 <script>
+import VideoParticipant from '@/Components/VideoParticipant.vue'
+
 import UseObservers from '@/Uses/UseObservers'
 
 export default {
+  components: {
+    VideoParticipant
+  },
   props: {
     videos: {
       required: true,
