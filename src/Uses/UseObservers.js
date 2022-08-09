@@ -65,7 +65,7 @@ export default () => {
     state.observersVideosResizeObserver = new ResizeObserver(() => observersVideosCallback())
     state.observersVideosResizeObserver.observe(state.observersVideosElementVideos)
 
-    setTimeout(() => observersVideosCallback(), 50)
+    setTimeout(() => observersVideosCallback(), 100)
   }
 
   return {
