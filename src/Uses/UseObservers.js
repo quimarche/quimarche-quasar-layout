@@ -1,19 +1,19 @@
 import initLayoutContainer from 'opentok-layout-js'
 import { computed, reactive } from 'vue'
 
-const state = reactive({
-  observersLayoutElementBreadcrumbs: null,
-  observersLayoutElementFooter: null,
-  observersLayoutElementHeader: null,
-  observersLayoutElementLayout: null,
-  observersLayoutResizeObserver: null,
-  observersLayoutStyle: null,
-  observersVideosElementVideos: null,
-  observersVideosMutationObserver: null,
-  observersVideosResizeObserver: null
-})
-
 export default () => {
+  const state = reactive({
+    observersLayoutElementBreadcrumbs: null,
+    observersLayoutElementFooter: null,
+    observersLayoutElementHeader: null,
+    observersLayoutElementLayout: null,
+    observersLayoutResizeObserver: null,
+    observersLayoutStyle: null,
+    observersVideosElementVideos: null,
+    observersVideosMutationObserver: null,
+    observersVideosResizeObserver: null
+  })
+
   const observersLayoutCallback = () => {
     const clientHeightBreadcrumbs = state.observersLayoutElementBreadcrumbs.clientHeight + 1
     const clientHeightFooter = state.observersLayoutElementFooter.clientHeight + 1
