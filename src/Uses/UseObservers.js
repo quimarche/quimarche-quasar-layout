@@ -56,8 +56,8 @@ export default () => {
     state.observersVideosResizeObserver = null
   }
 
-  const observersVideosInitialise = () => {
-    state.observersVideosElementVideos = document.getElementById('videos')
+  const observersVideosInitialise = (id) => {
+    state.observersVideosElementVideos = document.getElementById(id)
 
     state.observersVideosMutationObserver = new MutationObserver(() => observersVideosCallback())
     state.observersVideosMutationObserver.observe(state.observersVideosElementVideos, { childList: true })
@@ -71,6 +71,6 @@ export default () => {
     observersLayoutInitialise: () => observersLayoutInitialise(),
     observersLayoutStyle: computed(() => state.observersLayoutStyle),
     observersVideosFinalise: () => observersVideosFinalise(),
-    observersVideosInitialise: () => observersVideosInitialise()
+    observersVideosInitialise: (id) => observersVideosInitialise(id)
   }
 }

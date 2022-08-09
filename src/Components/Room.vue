@@ -22,7 +22,7 @@ export default {
     }
   },
   mounted() {
-    this.observersVideosInitialise()
+    this.observersVideosInitialise('videos')
     for (const element of document.getElementsByTagName('video')) {
       setTimeout(() => element.play(), Math.floor(Math.random() * 1000))
     }
