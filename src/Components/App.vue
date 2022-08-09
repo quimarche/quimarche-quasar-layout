@@ -3,11 +3,11 @@ q-layout#layout(view="hHh LpR fFf")
   q-header#header(bordered)
     q-toolbar
       q-toolbar-title Quimarche Quasar Layout
-      q-btn-dropdown(flat :label="activity.label")
+      q-btn-dropdown(flat :label="activity")
         q-list(separator)
           q-item(@click="clickActivity(index)" clickable v-close-popup v-for="(activity, index) in activities" v-ripple)
             q-item-section
-              q-item-label {{ activity.label }}
+              q-item-label {{ activity }}
       q-btn-dropdown(flat :label="count.label")
         q-list(separator)
           q-item(@click="clickCount(index)" clickable v-close-popup v-for="(count, index) in counts" v-ripple)
@@ -20,7 +20,7 @@ q-layout#layout(view="hHh LpR fFf")
       //- this could be a q-scroll-area rather than a div
       div(:style="observersLayoutStyle")
         div.fit.q-pa-12
-          component(:videos="videos" :is="activity.label")
+          component(:is="activity" :videos="videos")
   q-footer#footer(bordered)
     q-bar(dense)
       q-space
@@ -56,7 +56,7 @@ export default {
   },
   data() {
     return {
-      activities: [{ label: 'Intro' }, { label: 'PreInteraction' }, { label: 'Interaction' }, { label: 'Evaluation' }, { label: 'Feedback' }, { label: 'Outro' }],
+      activities: ['Intro', 'PreInteraction', 'Interaction', 'Evaluation', 'Feedback', 'Outro'],
       activity: null,
       counts: [
         { label: '1 Person', length: 1 },
