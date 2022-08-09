@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     videosRecordedParticipants() {
-      return this.videos
+      return this.videos.slice(0, 2)
     }
   },
   mounted() {
