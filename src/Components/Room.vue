@@ -1,5 +1,17 @@
 <template lang="pug">
-videos-all-participants(:videos="videos")
+template(v-if="activity === 'Interaction'")
+  div.column.fit
+    div.col
+      videos-recorded-participants(:videos="videos")
+    div.col
+      div.fit.row
+        div.col-2
+          videos-unrecorded-participants(:videos="videos")
+        div.col
+          div OTHER
+template(v-else)
+  div.fit.row
+    videos-all-participants(:videos="videos")
 </template>
 
 <script>
