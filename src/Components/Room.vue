@@ -1,15 +1,15 @@
 <template lang="pug">
-videos(:videos="videos")
+videos-all-participants(:videos="videos")
 </template>
 
 <script>
-import Videos from '@/Components/Videos.vue'
+import VideosAllParticipants from '@/Components/VideosAllParticipants.vue'
 
 import UseObservers from '@/Uses/UseObservers'
 
 export default {
   components: {
-    Videos
+    VideosAllParticipants
   },
   props: {
     videos: {
