@@ -1,5 +1,5 @@
 <template lang="pug">
-div#videosRecordedParticipants.fit
+div#videos-recorded-participants.fit
   video-participant(loop :video="video" v-for="video in videosRecordedParticipants")
 </template>
 
@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted() {
-    this.observersVideosInitialise('videosRecordedParticipants')
+    this.observersVideosInitialise('videos-recorded-participants')
     for (const element of document.getElementsByTagName('video')) {
       setTimeout(() => element.play(), Math.floor(Math.random() * 1000))
     }

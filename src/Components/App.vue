@@ -98,6 +98,6 @@ export default {
   border-bottom: $layout-border
 .q-pa-12
   padding: 12px
-#videosAllParticipants, #videosRecordedParticipants, #videosUnrecordedParticipants
+#videos-all-participants, #videos-recorded-participants, #videos-unrecorded-participants
   position: relative
 </style>
