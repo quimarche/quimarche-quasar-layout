@@ -34,6 +34,7 @@ import Interaction from '@/Components/Interaction.vue'
 import Intro from '@/Components/Intro.vue'
 import Outro from '@/Components/Outro.vue'
 import PreInteraction from '@/Components/PreInteraction.vue'
+import Share from '@/Components/Share.vue'
 
 import UseObservers from '@/Uses/UseObservers'
 
@@ -44,7 +45,8 @@ export default {
     Interaction,
     Intro,
     Outro,
-    PreInteraction
+    PreInteraction,
+    Share
   },
   setup() {
     const { observersLayoutFinalise, observersLayoutInitialise, observersLayoutStyle } = UseObservers()
@@ -56,7 +58,7 @@ export default {
   },
   data() {
     return {
-      activities: ['Intro', 'PreInteraction', 'Interaction', 'Evaluation', 'Feedback', 'Outro'],
+      activities: ['Intro', 'PreInteraction', 'Interaction', 'Evaluation', 'Feedback', 'Outro', 'Share'],
       activity: null,
       counts: [
         { label: '1 Person', length: 1 },
