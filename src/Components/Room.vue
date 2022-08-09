@@ -4,12 +4,14 @@ videos-all-participants(:videos="videos")
 
 <script>
 import VideosAllParticipants from '@/Components/VideosAllParticipants.vue'
-
-import UseObservers from '@/Uses/UseObservers'
+import VideosRecordedParticipants from '@/Components/VideosRecordedParticipants.vue'
+import VideosUnrecordedParticipants from '@/Components/VideosUnrecordedParticipants.vue'
 
 export default {
   components: {
-    VideosAllParticipants
+    VideosAllParticipants,
+    VideosRecordedParticipants,
+    VideosUnrecordedParticipants
   },
   props: {
     videos: {
