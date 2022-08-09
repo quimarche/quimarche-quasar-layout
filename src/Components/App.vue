@@ -87,7 +87,7 @@ export default {
     },
     clickCount(index) {
       this.count = this.counts[index]
-      this.videos = Array.from({ length: this.count.length }, () => ({ src: 'video-1.mp4' }))
+      this.videos = Array.from({ length: this.count.length }, () => ({ src: 'video.mp4' }))
     }
   }
 }

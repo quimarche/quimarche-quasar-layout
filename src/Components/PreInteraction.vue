@@ -1,13 +1,13 @@
 <template lang="pug">
-videos(:key="videos.length" :videos="videos")
+room(:key="videos.length" :videos="videos")
 </template>
 
 <script>
-import Videos from '@/Components/Videos.vue'
+import Room from '@/Components/Room.vue'
 
 export default {
   components: {
-    Videos
+    Room
   },
   props: {
     videos: {
