@@ -64,7 +64,8 @@ export default {
         { label: '3 People', length: 3 },
         { label: '4 People', length: 4 },
         { label: '5 People', length: 5 },
-        { label: '6 People', length: 6 }
+        { label: '6 People', length: 6 },
+        { label: '50 People', length: 50 }
       ],
       count: null,
       videos: []
