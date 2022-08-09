@@ -1,11 +1,11 @@
 <template lang="pug">
 div.video-participant
   video.fit(loop :src="video.src")
+  q-avatar(:class="avatarClassAudio" @click="clickAvatarAudio" color="white" :icon="avatarIconAudio" size="sm" :text-color="avatarTextColorAudio")
   q-avatar(:class="avatarClassIdent"                           color="white"                         size="sm" :text-color="avatarTextColorIdent") {{ avatarContentIdent }}
     q-tooltip {{ tooltipContentIdent }}
   q-avatar(:class="avatarClassLevel"                           color="white" :icon="avatarIconLevel" size="sm" :text-color="avatarTextColorLevel")
   q-avatar(:class="avatarClassVideo" @click="clickAvatarVideo" color="white" :icon="avatarIconVideo" size="sm" :text-color="avatarTextColorVideo")
-  q-avatar(:class="avatarClassAudio" @click="clickAvatarAudio" color="white" :icon="avatarIconAudio" size="sm" :text-color="avatarTextColorAudio")
 </template>
 
 <script>
@@ -48,7 +48,7 @@ export default {
       return 'text'
     },
     avatarTextColorLevel() {
-      return this.video.index % 2 ? 'primary' : 'grey-6'
+      return 'text'
     },
     avatarTextColorVideo() {
       return this.video.index % 2 ? 'primary' : 'grey-6'

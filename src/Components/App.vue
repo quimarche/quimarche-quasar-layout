@@ -102,16 +102,16 @@ export default {
   .q-avatar
     position: absolute
   .q-avatar:nth-of-type(1)
-    left: 4px
-    top: 4px
-  .q-avatar:nth-of-type(2)
     right: 4px
+    bottom: 4px
+  .q-avatar:nth-of-type(2)
+    left: 4px
     top: 4px
   .q-avatar:nth-of-type(3)
-    left: 4px
-    bottom: 4px
-  .q-avatar:nth-of-type(4)
     right: 4px
+    top: 4px
+  .q-avatar:nth-of-type(4)
+    left: 4px
     bottom: 4px
 #videos-all-participants, #videos-recorded-participants, #videos-unrecorded-participants
   position: relative
