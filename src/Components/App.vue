@@ -32,7 +32,6 @@ import Evaluation from '@/Components/Evaluation.vue'
 import Feedback from '@/Components/Feedback.vue'
 import Interaction from '@/Components/Interaction.vue'
 import Intro from '@/Components/Intro.vue'
-import Outro from '@/Components/Outro.vue'
 import PreInteraction from '@/Components/PreInteraction.vue'
 import Share from '@/Components/Share.vue'
 
@@ -44,7 +43,6 @@ export default {
     Feedback,
     Interaction,
     Intro,
-    Outro,
     PreInteraction,
     Share
   },
@@ -58,7 +56,7 @@ export default {
   },
   data() {
     return {
-      activities: ['Intro', 'PreInteraction', 'Interaction', 'Evaluation', 'Feedback', 'Outro', 'Share'],
+      activities: ['Intro', 'PreInteraction', 'Interaction', 'Evaluation', 'Feedback', 'Share'],
       activity: null,
       counts: [
         { label: '1 Person', length: 1 },
