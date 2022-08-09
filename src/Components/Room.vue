@@ -14,6 +14,10 @@ export default {
     VideosUnrecordedParticipants
   },
   props: {
+    activity: {
+      required: true,
+      type: String
+    },
     videos: {
       required: true,
       type: Array

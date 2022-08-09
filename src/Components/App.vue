@@ -20,7 +20,7 @@ q-layout#layout(view="hHh LpR fFf")
       //- this could be a q-scroll-area rather than a div
       div(:style="observersLayoutStyle")
         div.fit.q-pa-12
-          component(:is="activity" :videos="videos")
+          component(:activity="activity" :is="activity" :videos="videos")
   q-footer#footer(bordered)
     q-bar(dense)
       q-space

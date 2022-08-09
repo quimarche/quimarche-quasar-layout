@@ -1,5 +1,5 @@
 <template lang="pug">
-room(:key="videos.length" :videos="videos")
+room(:activity="activity" :key="videos.length" :videos="videos")
 </template>
 
 <script>
@@ -10,6 +10,10 @@ export default {
     Room
   },
   props: {
+    activity: {
+      required: true,
+      type: String
+    },
     videos: {
       required: true,
       type: Array
